@@ -2,7 +2,6 @@ package com.biz.memo.adaper;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +15,17 @@ import com.biz.memo.domain.MemoVO;
 
 import java.util.List;
 
+
+/*
+viewAdapter는 memolist, memoVO을 사용해서 화면을 그리기를 한다
+
+ViewModel이 Repository-Dao와 연결해서 CRUD를 하도록 설계되어있다
+
+ViewAdapter는 memolist로 일시적으로 안보이게만 처리하는 것. 기억장치에 들어있는 데이터이다
+실제 데이터를 삭제하려면 viewmodel을 불러서 DB에서 삭제해야한다
+
+Main에서 viewmodel을 가져와서 observe를 사용한다. db에서 데이터를 가져와서 viewadapter로 전달한다
+ */
 public class MemoViewAdapter extends RecyclerView.Adapter {
 
     // 삭제버튼에 사용할 이벤트 인터페이스를 하나 생성하고
@@ -24,9 +34,6 @@ public class MemoViewAdapter extends RecyclerView.Adapter {
         void onDeleteButtonCliked(MemoVO memoVO);
     }
 
-    private Context context = null;
-    private List<MemoVO> memoList = null;
-    private LayoutInflater layoutInflater;
 
     // 삭제버튼 이벤트를 저장할 객체 변수를 선언하고
     private OnDeleteButtonClickListener deleteBtnClick;
@@ -36,6 +43,10 @@ public class MemoViewAdapter extends RecyclerView.Adapter {
     public void setDeleteBtnClick(OnDeleteButtonClickListener event) {
         this.deleteBtnClick = event;
     }
+
+    private Context context = null;
+    private List<MemoVO> memoList = null;
+    private LayoutInflater layoutInflater;
 
     /*
     MainActivity에서 이벤트 인터페이스를 구현하고

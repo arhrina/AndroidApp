@@ -1,5 +1,6 @@
 package com.biz.memo;
 
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,25 +9,19 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStore;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.biz.memo.adaper.MemoViewAdapter;
-import com.biz.memo.adaper.MemoViewModel;
 import com.biz.memo.domain.MemoVO;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
